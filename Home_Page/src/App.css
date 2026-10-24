@@ -1,0 +1,626 @@
+
+/* NAVIGATION BAR */
+
+.Navigation_Bar {
+    width: 100%;
+    background-color: #eeeeee;
+    border-bottom: 1px solid #d5d5d5;
+}
+
+.nav_bar {
+    width: 100%;
+    min-height: 48px;
+    padding: 7px 12px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-sizing: border-box;
+}
+
+.nav-brand {
+    color: #222222;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.nav-brand:hover {
+    color: #3283df;
+}
+
+.nav {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.nav li {
+    margin: 0;
+}
+
+.nav a,
+.nav-login,
+.nav-post {
+    color: #333333;
+    font-size: 13px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.nav a:hover,
+.nav-login:hover,
+.nav-post:hover {
+    color: #3283df;
+}
+
+.nav-search {
+    flex: 1;
+    min-width: 80px;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.nav-search input {
+    width: 100%;
+    height: 30px;
+    padding: 6px 9px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-size: 12px;
+    background-color: white;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.nav-post {
+    border: none;
+    background: transparent;
+    padding: 6px 4px;
+    cursor: pointer;
+}
+
+.nav-login {
+    padding: 6px 4px;
+}
+
+@media (max-width: 760px) {
+    .nav_bar {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .nav {
+        gap: 10px;
+    }
+
+    .nav-search {
+        order: 3;
+        flex-basis: 100%;
+        max-width: none;
+    }
+}
+
+
+
+/* =========================
+   BANNER
+   ========================= */
+
+.Banner {
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    position: relative;
+}
+
+.Banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* Message appears when mouse
+   is placed over banner */
+
+.message {
+    display: none;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    bottom: 0;
+
+    color: white;
+    text-align: center;
+    font-size: clamp(16px, 2.5vw, 30px);
+    background-color: black;
+    opacity: 60%;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.Banner:hover .message {
+    display: flex;
+}
+
+
+/* =========================
+   PROFILE
+   ========================= */
+
+.round_image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.round_image img {
+    width: clamp(70px, 10vw, 150px);
+    height: clamp(70px, 10vw, 150px);
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin-top: 2%;
+}
+
+.author_profile .intro {
+    text-align: center;
+    font-size: clamp(10px, 2.5vw, 20px);
+    color: rgb(50, 131, 223);
+}
+
+.author_profile hr {
+    width: clamp(100px, 60%, 200px);
+    border: none;
+    border-top: 2px solid rgb(50, 131, 223);
+    margin: 10px auto;
+}
+
+.author_profile .about_myself {
+    text-align: center;
+    font-size: clamp(15px, 3vw, 35px);
+    color: rgb(50, 131, 223);
+}
+
+
+/* =========================
+   PROJECTS
+   ========================= */
+
+.Portfolio {
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto 40px auto;
+}
+
+.projects {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.projects img {
+    width: 300px;
+    max-width: 250px;
+    object-fit: cover;
+    border-radius: 16px;
+    flex-shrink: 0;
+}
+
+.project_info {
+    color: rgb(50, 131, 223);
+    font-size: 16px;
+    margin: 0;
+}
+
+
+/* =========================
+   FEATURED ARTICLES
+   AND FEATURED TUTORIALS
+   ========================= */
+
+.featured-section {
+    width: 100%;
+    padding: 30px 20px 50px;
+    text-align: center;
+}
+
+.featured-section h2 {
+    color: rgb(50, 131, 223);
+    font-size: clamp(22px, 3vw, 30px);
+    margin: 20px 0 30px;
+}
+
+
+/* Put the 3 cards in one row */
+
+.featured-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 25px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+
+/* =========================
+   SEMANTIC UI CARDS
+   ========================= */
+
+/*
+   All cards have exactly the
+   same width and height.
+*/
+
+.featured-container .ui.card {
+    width: 320px !important;
+    height: 390px !important;
+    margin: 0 !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+
+/* =========================
+   CARD IMAGES
+   ========================= */
+
+/*
+   Every image gets the same
+   image area.
+*/
+
+.featured-container .ui.card > .image {
+    width: 100% !important;
+    height: 180px !important;
+    min-height: 180px !important;
+    overflow: hidden !important;
+}
+
+
+/*
+   Make the actual image fill
+   the same space.
+*/
+
+.featured-container .ui.card > .image img {
+    width: 100% !important;
+    height: 180px !important;
+    object-fit: cover !important;
+    display: block !important;
+}
+
+
+/* =========================
+   CARD CONTENT
+   ========================= */
+
+.featured-container .ui.card > .content {
+    text-align: center;
+    flex: 1;
+}
+
+.featured-container .ui.card .header {
+    font-size: 20px !important;
+    margin-bottom: 10px;
+}
+
+.featured-container .ui.card .description {
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+
+/* =========================
+   RATING
+   ========================= */
+
+.card-rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.card-rating .ui.rating {
+    margin: 0;
+}
+
+
+/* =========================
+   CARD BUTTON
+   ========================= */
+
+.featured-container .ui.card > .extra {
+    text-align: center;
+    min-height: 65px;
+}
+
+.featured-container .ui.primary.button {
+    background-color: rgb(50, 131, 223);
+}
+
+.featured-container .ui.primary.button:hover {
+    background-color: rgb(9, 80, 137);
+}
+
+
+/* =========================
+   GALLERY
+   ========================= */
+
+.My_photos p {
+    text-align: center;
+    font-size: clamp(15px, 3vw, 35px);
+    color: rgb(50, 131, 223);
+}
+
+.My_photos hr {
+    width: clamp(100px, 60%, 200px);
+    border: none;
+    border-top: 2px solid rgb(50, 131, 223);
+    margin: 10px auto;
+}
+
+.gallery_section {
+    width: 95%;
+    max-width: 2000px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+
+/* Pinterest style gallery */
+
+.pinterest_gallery {
+    column-count: 6;
+    column-gap: 14px;
+    width: 100%;
+}
+
+.pinterest_gallery img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 14px;
+    border-radius: 12px;
+    display: block;
+    break-inside: avoid;
+}
+
+.pinterest_gallery img:hover {
+    transform: scale(1.03);
+    cursor: pointer;
+}
+
+
+/* =========================
+   SUBSCRIBE
+   ========================= */
+
+.subscribe {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px 20px;
+    margin: 40px auto;
+    background-color: #f5f5f5;
+}
+
+.subscribe h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.subscribe form {
+    display: flex;
+    gap: 10px;
+}
+
+.subscribe input {
+    padding: 5px;
+    width: 250px;
+    border: 1px solid #ccc;
+    font-size: 12px;
+}
+
+.subscribe button {
+    padding: 10px 18px;
+    border: none;
+    background-color: #333;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.subscribe button:hover {
+    background-color: #555;
+}
+
+
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
+.footer {
+    width: 100%;
+    background-color: rgb(13, 151, 156);
+    color: black;
+    padding: 30px 8% 20px;
+}
+
+
+/* Three columns */
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+
+/* Each column */
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    min-width: 180px;
+}
+
+.footer-column h3 {
+    font-size: 20px;
+    margin: 0 0 15px 0;
+    font-weight: bold;
+}
+
+
+/* Footer links */
+
+.footer-column a {
+    color: black;
+    text-decoration: none;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.footer-column a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   SOCIAL MEDIA
+   ========================= */
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+
+/* Semantic UI icons */
+
+.social-icons i {
+    background-color: white;
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 4px;
+    font-size: 18px;
+
+    margin: 0;
+}
+
+
+/* =========================
+   BOTTOM FOOTER
+   ========================= */
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 35px;
+}
+
+.footer-bottom h3 {
+    font-size: 20px;
+    margin: 0 0 12px 0;
+}
+
+
+.footer-bottom-links {
+    display: flex;
+    justify-content: center;
+    gap: 45px;
+}
+
+
+.footer-bottom-links a {
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+
+.footer-bottom-links a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   RESPONSIVE FOOTER
+   ========================= */
+
+@media (max-width: 600px) {
+
+    .footer-content {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .footer-column {
+        width: 100%;
+        text-align: center;
+        align-items: center;
+    }
+
+    .footer-bottom-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .pinterest_gallery {
+        column-count: 2;
+    }
+
+    .featured-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .featured-container .ui.card {
+        width: 320px !important;
+        max-width: 100%;
+    }
+
+    .subscribe {
+        flex-direction: column;
+    }
+
+    .subscribe form {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .subscribe input {
+        width: 60%;
+    }
+}
