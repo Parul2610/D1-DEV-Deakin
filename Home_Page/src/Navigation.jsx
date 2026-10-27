@@ -1,45 +1,50 @@
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "./AuthContext";
+import "./Navigation.css";
 
 function Navigation() {
-    return (
-        <div className="Navigation_Bar">
-            <nav className="nav_bar">
+  const { currentUser, logout } = useAuth();
+  const navigate = useNavigate();
 
-                <Link to="/" className="nav-brand">
-                    DEV@Deakin
-                </Link>
+  function handleLogout() {
+    logout();
+    navigate("/login");
+  }
 
-                <ul className="nav">
-                    <li><a href="/#about">About</a></li>
-                    <li><a href="/#work">Work</a></li>
-                    <li><a href="/#contact">Contact</a></li>
-                </ul>
+  return (
+    <nav className="nav_bar">
+      <Link to="/" className="nav">
+        Home
+      </Link>
 
-                <form
-                    className="nav-search"
-                    onSubmit={(event) => event.preventDefault()}
-                >
-                    <input
-                        type="search"
-                        placeholder="Search..."
-                        aria-label="Search"
-                    />
-                </form>
+      <Link to="/pricing" className="nav">
+        Pricing
+      </Link>
 
-                <div className="nav-actions">
-                    <Link to="/postpage" className="nav-post">
-                        Post
-                    </Link>
+      {currentUser ? (
+        <>
+          <span className="nav">
+            {currentUser.displayName || currentUser.email}
+          </span>
 
-                    <Link to="/login" className="nav-login">
-                        Login
-                    </Link>
-                </div>
+          <button type="button" onClick={handleLogout}>
+            Logout
+          </button>
+        </>
+      ) : (
+        <>
+          <Link to="/login" className="nav">
+            Login
+          </Link>
 
-            </nav>
-        </div>
-    );
+          <Link to="/signup" className="nav">
+            Sign Up
+          </Link>
+        </>
+      )}
+    </nav>
+  );
 }
 
 export default Navigation;

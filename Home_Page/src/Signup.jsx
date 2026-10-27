@@ -1,15 +1,4 @@
-
 import { useState } from "react";
-import {
-  createUserWithEmailAndPassword,
-  updateProfile
-} from "firebase/auth";
-import {
-  doc,
-  setDoc,
-  serverTimestamp
-} from "firebase/firestore";
-import { auth, db } from "./Firebase";
 import "./Signup.css";
 
 function Signup() {
@@ -18,6 +7,7 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   async function handleSignup(event) {
     event.preventDefault();
@@ -28,33 +18,40 @@ function Signup() {
       return;
     }
 
+    setLoading(true);
+
     try {
-      const userCredential =
-        await createUserWithEmailAndPassword(
-          auth,
+      const response = await fetch("http://localhost:3000/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          displayName,
           email,
-          password
-        );
-
-      const user = userCredential.user;
-
-      await updateProfile(user, {
-        displayName: displayName
+          password,
+        }),
       });
 
-      await setDoc(doc(db, "users", user.uid), {
-        displayName: displayName,
-        email: email,
-        createdAt: serverTimestamp()
-      });
+      const data = await response.json();
 
-      setMessage("Registration successful!");
+      if (!response.ok) {
+        throw new Error(data.message || "Registration failed.");
+      }
+
+      setMessage("Registration successful! You can now log in.");
       setDisplayName("");
       setEmail("");
       setPassword("");
       setConfirmPassword("");
     } catch (error) {
-      setMessage(error.message);
+      setMessage(
+        error.message === "Failed to fetch"
+          ? "Cannot connect to the backend. Check that the server is running."
+          : error.message
+      );
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -63,52 +60,50 @@ function Signup() {
       <h2>Create an Account</h2>
 
       <form onSubmit={handleSignup}>
-        <label>Display Name</label>
+        <label htmlFor="displayName">Display Name</label>
         <input
+          id="displayName"
           type="text"
           value={displayName}
-          onChange={(event) =>
-            setDisplayName(event.target.value)
-          }
+          onChange={(event) => setDisplayName(event.target.value)}
           required
         />
 
-        <label>Email</label>
+        <label htmlFor="signupEmail">Email</label>
         <input
+          id="signupEmail"
           type="email"
           value={email}
-          onChange={(event) =>
-            setEmail(event.target.value)
-          }
+          onChange={(event) => setEmail(event.target.value)}
           required
         />
 
-        <label>Password</label>
+        <label htmlFor="signupPassword">Password</label>
         <input
+          id="signupPassword"
           type="password"
           value={password}
-          onChange={(event) =>
-            setPassword(event.target.value)
-          }
-          required
+          onChange={(event) => setPassword(event.target.value)}
           minLength={6}
+          required
         />
 
-        <label>Confirm Password</label>
+        <label htmlFor="confirmPassword">Confirm Password</label>
         <input
+          id="confirmPassword"
           type="password"
           value={confirmPassword}
-          onChange={(event) =>
-            setConfirmPassword(event.target.value)
-          }
-          required
+          onChange={(event) => setConfirmPassword(event.target.value)}
           minLength={6}
+          required
         />
 
-        <button type="submit">Sign Up</button>
+        <button type="submit" disabled={loading}>
+          {loading ? "Creating Account..." : "Sign Up"}
+        </button>
       </form>
 
-      {message && <p>{message}</p>}
+      {message && <p role="status">{message}</p>}
     </div>
   );
 }

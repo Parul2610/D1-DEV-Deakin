@@ -10,6 +10,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Signup from "./Signup";
 import Login from "./Login";
 import PostPage from "./post/PostPage";
+import Pricing from "./pricing/Pricing";
 
 import "./App.css";
 
@@ -130,6 +131,12 @@ return (
           path="/postpage"
           element={<PostPage />}
         />
+
+        <Route
+    path="/pricing"
+    element={<Pricing />}
+/>
+
       </Routes>
 
       <Footer />

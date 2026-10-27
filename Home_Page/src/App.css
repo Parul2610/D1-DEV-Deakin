@@ -111,6 +111,27 @@
     }
 }
 
+.nav-user {
+    font-size: 12px;
+    color: #333;
+    max-width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.nav-logout {
+    background: transparent;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.nav-logout:hover {
+    background-color: #e0e0e0;
+}
+
 
 
 /* =========================

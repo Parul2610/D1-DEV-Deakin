@@ -1,4 +1,4 @@
-.env
-**/.env
 node_modules/
-**/node_modules/
+.env
+.env.*
+Backend/*firebase-adminsdk*.json

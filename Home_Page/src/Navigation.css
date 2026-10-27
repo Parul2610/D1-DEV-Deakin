@@ -1,0 +1,89 @@
+
+/* Main navigation bar */
+.nav_bar {
+  width: 100%;
+  min-height: 70px;
+  padding: 12px 6%;
+  background: #172554;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 28px;
+  box-sizing: border-box;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+  flex-wrap: wrap;
+}
+
+/* Navigation links */
+.nav_bar .nav {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+/* Hover effect */
+.nav_bar .nav:hover {
+  color: #93c5fd;
+}
+
+/* Pricing link */
+.nav_bar a[href="/pricing"] {
+  background: #2563eb;
+  padding: 10px 18px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.nav_bar a[href="/pricing"]:hover {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+/* Logged-in user's name or email */
+.nav_bar span.nav {
+  color: #dbeafe;
+  font-size: 14px;
+}
+
+/* Logout button */
+.nav_bar button {
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+  padding: 10px 18px;
+  background: transparent;
+  color: #ffffff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav_bar button:hover {
+  background: #ffffff;
+  color: #172554;
+}
+
+/* Keyboard accessibility */
+.nav_bar a:focus-visible,
+.nav_bar button:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 4px;
+}
+
+/* Mobile screens */
+@media (max-width: 600px) {
+  .nav_bar {
+    justify-content: center;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .nav_bar .nav {
+    font-size: 14px;
+  }
+
+  .nav_bar button {
+    padding: 9px 14px;
+  }
+}
